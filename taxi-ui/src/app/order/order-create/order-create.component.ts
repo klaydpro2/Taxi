@@ -9,19 +9,26 @@ import { OrderService } from '../order.service';
   templateUrl: './order-create.component.html',
   styleUrls: ['./order-create.component.css']
 })
-export class OrderCreateComponent {//implements OnInit {
+export class OrderCreateComponent implements OnInit {
 
   order: Order = new Order();
 
   constructor(private router: Router, private orderService: OrderService) { }
 
-/*  ngOnInit() {
-  }*/
+  ngOnInit() {
+  }
 
   createOrder(): void {
     this.orderService.createOrder(this.order)
       .subscribe( data => {
         alert("Такси успешно заказано.");
+      });
+  }
+
+  getOrders(): void {
+    this.orderService.getOrders()
+      .subscribe( data => {
+        alert("get orde.");
       });
   }
 

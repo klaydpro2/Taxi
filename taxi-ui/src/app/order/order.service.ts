@@ -12,7 +12,7 @@ export class OrderService {
 
   constructor(private http:HttpClient) {}
 
-  private orderUrl = '/order';
+  private orderUrl = 'http://localhost:8080/order';
 
   public getOrders() {
     return this.http.get<Order[]>(this.orderUrl);
