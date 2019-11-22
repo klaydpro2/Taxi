@@ -5,7 +5,7 @@ import lombok.Data;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "order")
+@Table(name = "orders")
 @Data
 public class Order {
 
@@ -14,9 +14,9 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "addressFrom")
+    @Column(name = "address_from")
     private String addressFrom;
 
-    @Column(name = "addressTo")
+    @Column(name = "address_to")
     private String addressTo;
 }

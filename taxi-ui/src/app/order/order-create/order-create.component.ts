@@ -15,13 +15,17 @@ export class OrderCreateComponent implements OnInit {
 
   constructor(private router: Router, private orderService: OrderService) { }
 
+  receivedOrder: Order;
+  done: boolean = false;
+
   ngOnInit() {
   }
 
   createOrder(): void {
     this.orderService.createOrder(this.order)
-      .subscribe( data => {
-        alert("Такси успешно заказано.");
+      .subscribe((data: Order) => {
+        this.receivedOrder = data;
+        this.done = true;
       });
   }
 

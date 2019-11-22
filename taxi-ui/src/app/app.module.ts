@@ -7,12 +7,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { OrderCreateComponent } from './order/order-create/order-create.component';
 import {OrderService} from './order/order.service';
+import { OrderListComponent } from './order/order-list/order-list.component';
+import { OrderViewComponent } from './order/order-view/order-view.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    OrderCreateComponent
+    OrderCreateComponent,
+    OrderListComponent,
+    OrderViewComponent
   ],
   imports: [
     BrowserModule,

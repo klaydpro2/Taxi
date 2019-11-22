@@ -11,6 +11,11 @@
       <input [(ngModel)]="order.addressTo" placeholder="Укажите адрес доставки такси" name="addressTo" class="form-control" id="addressTo">
     </div>
 
+    <div *ngIf="done">
+      <div>Заказ такси выполнен.</div>
+      <div>К вам подъедет  на адрес {{ receivedOrder.addressFrom }}</div>
+    </div>
+
     <button class="btn btn-success" (click)="createOrder()">Заказать</button>
 
     <button class="btn btn-success" (click)="getOrders()">getOrders</button>
