@@ -29,11 +29,4 @@ export class OrderCreateComponent implements OnInit {
       });
   }
 
-  getOrders(): void {
-    this.orderService.getOrders()
-      .subscribe( data => {
-        alert("get orde.");
-      });
-  }
-
 }

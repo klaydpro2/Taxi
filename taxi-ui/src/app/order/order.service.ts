@@ -14,6 +14,10 @@ export class OrderService {
 
   private orderUrl = 'http://localhost:8080/order';
 
+  public getOrder(id: string) {
+    return this.http.get<Order>(this.orderUrl + "/"+ id);
+  }
+
   public getOrders() {
     return this.http.get<Order[]>(this.orderUrl);
   }

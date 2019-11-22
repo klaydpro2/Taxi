@@ -14,7 +14,7 @@
       <td class="hidden">{{order.id}}</td>
       <td>{{order.addressFrom}}</td>
       <td>{{order.addressTo}}</td>
-      <a mat-button [routerLink]="['/order-view', order.id]">Просмотр</a>
+      <a mat-button [routerLink]="['./order-view', order.id]">Просмотр</a>
       <td><button class="btn btn-danger" (click)="deleteOrder(order)">Удалить</button></td>
     </tr>
     </tbody>
