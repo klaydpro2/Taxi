@@ -2,20 +2,20 @@
   <h2 class="text-center">Информация о заказе</h2>
   <form>
     <div class="form-group">
-      <label>Откуда:</label>
-      <input [(ngModel)]="order.addressFrom" placeholder="Укажите адрес заказа такси" name="addressFrom" class="form-control" id="addressFrom">
-    </div>
+      <label>Адрес назначения: </label>
+      <input [(ngModel)]="order.addressFrom" name="addressFrom" class="form-control" id="addressFrom">
+    </div><br>
 
     <div class="form-group">
-      <label>Куда:</label>
-      <input [(ngModel)]="order.addressTo" placeholder="Укажите адрес доставки такси" name="addressTo" class="form-control" id="addressTo">
+      <label>Адрес доставки: </label>
+      <input [(ngModel)]="order.addressTo" name="addressTo" class="form-control" id="addressTo">
     </div>
 
     <div *ngIf="done">
       <div>Заказ такси выполнен.</div>
       <div>К вам подъедет  на адрес {{ receivedOrder.addressFrom }}</div>
     </div>
-
-    <button class="btn btn-success" (click)="createOrder()">Заказать</button>
+    <br>
+    <button (click)="createOrder()">Заказать</button>
   </form>
 </div>

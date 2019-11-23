@@ -1,6 +1,12 @@
 <div class="col-md-6">
   <h2>Заказы такси</h2>
 
+  <button (click)="getAllOrders()">Все</button>
+  <button (click)="getActiveOrders()">Текущие</button>
+  <button (click)="getCompleteOrders()">Завершенные за период</button>
+  <input name="date" [(ngModel)]="dateBegin" type="date" required>
+  <input name="date" [(ngModel)]="dateEnd" type="date" required>
+
   <table class="table table-striped">
     <thead>
     <tr>
@@ -14,8 +20,8 @@
       <td class="hidden">{{order.id}}</td>
       <td>{{order.addressFrom}}</td>
       <td>{{order.addressTo}}</td>
-      <a mat-button [routerLink]="['./order-view', order.id]">Просмотр</a>
-      <td><button class="btn btn-danger" (click)="deleteOrder(order)">Удалить</button></td>
+      <a mat-button [routerLink]="['/order-view', order.id]">Просмотр</a>
+      <td><button (click)="deleteOrder(order)">Удалить</button></td>
     </tr>
     </tbody>
   </table>

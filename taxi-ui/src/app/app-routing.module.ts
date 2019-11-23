@@ -8,7 +8,7 @@ import { OrderViewComponent } from './order/order-view/order-view.component';
 const routes: Routes = [
   { path: 'order-create', component: OrderCreateComponent },
   { path: 'order-list', component: OrderListComponent },
-  { path: 'order-view:/id', component: OrderViewComponent }
+  { path: 'order-view/:id', component: OrderViewComponent }
 ];
 
 @NgModule({

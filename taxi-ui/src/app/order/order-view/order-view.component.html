@@ -1,1 +1,4 @@
-<p>order-view works!</p>
+<div *ngIf="order && order.id">
+  <label>from</label><span>{{order.addressFrom}}</span><br/>
+  <label>to</label><span>{{order.addressTo}}</span><br/>
+</div>

@@ -12,18 +12,34 @@ import { OrderService } from '../order.service';
 export class OrderListComponent implements OnInit {
 
   orders: Order[];
+  dateBegin: Date;
+  dateEnd: Date;
 
   constructor(private router: Router, private orderService: OrderService) { }
 
   ngOnInit() {
-    this.orderService.getOrders()
+    this.getAllOrders();
+  }
+
+  getAllOrders() {
+    this.orderService.getAllOrders()
       .subscribe( data => {
         this.orders = data;
       });
   }
 
-  viewOrder(order: Order) {
+  getActiveOrders() {
+    this.orderService.getActiveOrders()
+      .subscribe( data => {
+        this.orders = data;
+      });
+  }
 
+  getCompleteOrders() {
+    this.orderService.getCompleteOrders(this.dateBegin, this.dateEnd)
+      .subscribe( data => {
+        this.orders = data;
+      });
   }
 
   deleteOrder(order: Order): void {

@@ -3,11 +3,13 @@ package com.taxi.app.controller;
 import com.taxi.app.model.Order;
 import com.taxi.app.service.order.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
-@CrossOrigin (origins = "http://localhost:4200" , maxAge = 3600)
+@CrossOrigin (origins = "*" , maxAge = 3600)
 @RestController
 @RequestMapping({"/order"})
 public class OrderController {
@@ -20,17 +22,34 @@ public class OrderController {
         return orderService.create(order);
     }
 
-    @GetMapping
-    public List<Order> getAll(){
+    /*@GetMapping("/list/{type}")
+    public List<Order> getOrders(@PathVariable("type") String type) {
+        return orderService.getOrders(type);
+    }*/
+
+    @GetMapping("/list/all")
+    public List<Order> getAll() {
         return orderService.getAll();
     }
 
-    @GetMapping("/id")
+    @GetMapping("/list/active")
+    public List<Order> getActive() {
+        return orderService.getActive();
+    }
+
+    @GetMapping("/list/compete")
+    public List<Order> getComplete(
+            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) @RequestParam(value = "dateBegin") LocalDate dateBegin,
+            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) @RequestParam(value = "dateEnd") LocalDate dateEnd) {
+        return orderService.getComplete();
+    }
+
+    @GetMapping("/{id}")
     public Order getOrder(@PathVariable("id") int id){
         return orderService.getOrder(id);
     }
 
-    @DeleteMapping("/id")
+    @DeleteMapping("/{id}")
     public void delete(@PathVariable("id") int id) {
         orderService.delete(id);
     }

@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 
 import { Order } from '../models/order.model';
 
@@ -18,8 +18,23 @@ export class OrderService {
     return this.http.get<Order>(this.orderUrl + "/"+ id);
   }
 
-  public getOrders() {
-    return this.http.get<Order[]>(this.orderUrl);
+  /*public getOrders(type: string) {
+    return this.http.get<Order[]>(this.orderUrl + "/list/" + type);
+  }*/
+
+  public getAllOrders() {
+    return this.http.get<Order[]>(this.orderUrl + "/list/all");
+  }
+
+  public getActiveOrders() {
+    return this.http.get<Order[]>(this.orderUrl + "/list/active");
+  }
+
+  public getCompleteOrders(dateBegin: Date, dateEnd: Date) {
+    let params = new HttpParams();
+    params.set("dateBegin", dateBegin);
+    params.set("dateEnd", dateEnd);
+    return this.http.get<Order[]>(this.orderUrl + "/list/complete", {params: params});
   }
 
   public deleteOrder(order) {

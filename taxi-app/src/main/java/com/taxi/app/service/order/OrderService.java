@@ -8,7 +8,13 @@ public interface OrderService {
 
     Order create(Order order);
 
+    //List<Order> getOrders(String type);
+
     List<Order> getAll();
+
+    List<Order> getActive();
+
+    List<Order> getComplete();
 
     Order getOrder(int id);
 

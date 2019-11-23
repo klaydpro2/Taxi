@@ -19,4 +19,7 @@ public class Order {
 
     @Column(name = "address_to")
     private String addressTo;
+
+    @Column(name = "active")
+    private Boolean active;
 }
