@@ -6,12 +6,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
-@CrossOrigin (origins = "*" , maxAge = 3600)
+@CrossOrigin (origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping({"/order"})
+//@RequestMapping({"/api"})
 public class OrderController {
 
     @Autowired
@@ -37,11 +42,11 @@ public class OrderController {
         return orderService.getActive();
     }
 
-    @GetMapping("/list/compete")
+    @GetMapping("/list/complete")
     public List<Order> getComplete(
-            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) @RequestParam(value = "dateBegin") LocalDate dateBegin,
-            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) @RequestParam(value = "dateEnd") LocalDate dateEnd) {
-        return orderService.getComplete();
+            @DateTimeFormat(pattern = "yyyy-MM-dd") @RequestParam(value = "dateBegin") Date dateBegin,
+            @DateTimeFormat(pattern = "yyyy-MM-dd") @RequestParam(value = "dateEnd") Date dateEnd) {
+        return orderService.getComplete(dateBegin, dateEnd);
     }
 
     @GetMapping("/{id}")

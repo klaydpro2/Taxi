@@ -2,6 +2,7 @@ package com.taxi.app.service.order;
 
 import com.taxi.app.model.Order;
 
+import java.util.Date;
 import java.util.List;
 
 public interface OrderService {
@@ -14,7 +15,7 @@ public interface OrderService {
 
     List<Order> getActive();
 
-    List<Order> getComplete();
+    List<Order> getComplete(Date dateBegin, Date dateEnd);
 
     Order getOrder(int id);
 

@@ -11,6 +11,11 @@
       <input [(ngModel)]="order.addressTo" name="addressTo" class="form-control" id="addressTo">
     </div>
 
+    <div class="form-group">
+      <label>Адрес доставки: </label>
+      <input [(ngModel)]="order.addressTo" name="addressTo" class="form-control" id="addressTo">
+    </div>
+
     <div *ngIf="done">
       <div>Заказ такси выполнен.</div>
       <div>К вам подъедет  на адрес {{ receivedOrder.addressFrom }}</div>

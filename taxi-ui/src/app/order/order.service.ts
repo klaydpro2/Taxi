@@ -3,18 +3,15 @@ import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 
 import { Order } from '../models/order.model';
 
-const httpOptions = {
-  headers: new Headers({ 'Content-Type': 'application/json' })
-};
-
 @Injectable()
 export class OrderService {
 
   constructor(private http:HttpClient) {}
 
   private orderUrl = 'http://localhost:8080/order';
+  //private orderUrl = '/api';
 
-  public getOrder(id: string) {
+    public getOrder(id: string) {
     return this.http.get<Order>(this.orderUrl + "/"+ id);
   }
 
@@ -31,10 +28,17 @@ export class OrderService {
   }
 
   public getCompleteOrders(dateBegin: Date, dateEnd: Date) {
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
     let params = new HttpParams();
-    params.set("dateBegin", dateBegin);
-    params.set("dateEnd", dateEnd);
-    return this.http.get<Order[]>(this.orderUrl + "/list/complete", {params: params});
+    if (dateBegin) {
+      params = params.append('dateBegin', dateBegin.toString());
+    }
+    if (dateEnd) {
+      params = params.append("dateEnd", dateEnd.toString());
+    }
+
+    return this.http.get<Order[]>(this.orderUrl + "/list/complete", {headers: headers, params: params});
   }
 
   public deleteOrder(order) {

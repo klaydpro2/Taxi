@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -47,8 +48,8 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<Order> getComplete() {
-        return repository.findByActive(true);
+    public List<Order> getComplete(Date dateBegin, Date dateEnd) {
+        return repository.findByDateCompleteBetween(dateBegin, dateEnd);
     }
 
     @Override
