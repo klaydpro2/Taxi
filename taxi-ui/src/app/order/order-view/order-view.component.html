@@ -1,4 +1,7 @@
-<div *ngIf="order && order.id">
-  <label>from</label><span>{{order.addressFrom}}</span><br/>
-  <label>to</label><span>{{order.addressTo}}</span><br/>
+<div class = "mainForm">
+  <div *ngIf="order && order.id">
+    <h3>Заказ №{{order.id}}</h3>
+    <label>Адрес назначения: </label><span>{{order.addressFrom}}</span><br/>
+    <label>Адрес доставки: </label><span>{{order.addressTo}}</span><br/>
+  </div>
 </div>

@@ -22,6 +22,7 @@ export class OrderCreateComponent implements OnInit {
   }
 
   createOrder(): void {
+    this.order.active = true;
     this.orderService.createOrder(this.order)
       .subscribe((data: Order) => {
         this.receivedOrder = data;

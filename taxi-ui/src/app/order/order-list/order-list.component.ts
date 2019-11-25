@@ -42,6 +42,23 @@ export class OrderListComponent implements OnInit {
       });
   }
 
+  completeOrder(order: Order): void {
+    order.dateComplete = new Date();
+    order.active = false;
+    this.orderService.createOrder(order)
+      .subscribe((data: Order) => {
+        alert("Поездка завершена")
+      });
+  };
+
+  cancelOrder(order: Order): void {
+    order.active = false;
+    this.orderService.createOrder(order)
+      .subscribe((data: Order) => {
+        alert("Заказ отменен")
+      });
+  };
+
   deleteOrder(order: Order): void {
     this.orderService.deleteOrder(order)
       .subscribe( data => {

@@ -1,0 +1,16 @@
+.mainForm {
+  align-content: center;
+  text-align: center;
+}
+
+.tableForm {
+  margin-left:auto;
+  margin-right:auto;
+  margin-top: 20px;
+  align: center;
+  text-align: center;
+}
+
+.tableForm tr, th {
+  text-align:left;
+}
