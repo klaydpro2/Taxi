@@ -14,3 +14,16 @@
 .tableForm tr, th {
   text-align:left;
 }
+
+.link {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.buttons button {
+  margin-right: 10px;
+}
+
+.buttons input {
+  margin-right: 10px;
+}

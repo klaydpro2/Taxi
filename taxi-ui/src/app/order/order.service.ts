@@ -31,12 +31,8 @@ export class OrderService {
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
     let params = new HttpParams();
-    if (dateBegin) {
-      params = params.append('dateBegin', dateBegin.toString());
-    }
-    if (dateEnd) {
-      params = params.append("dateEnd", dateEnd.toString());
-    }
+    params = params.append('dateBegin', dateBegin ? dateBegin.toString() : "0001-01-01");
+    params = params.append("dateEnd", dateEnd ?  dateEnd.toString() : "9999-12-31");
 
     return this.http.get<Order[]>(this.orderUrl + "/list/complete", {headers: headers, params: params});
   }
