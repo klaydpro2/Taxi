@@ -14,6 +14,7 @@ export class OrderListComponent implements OnInit {
   orders: Order[];
   dateBegin: Date;
   dateEnd: Date;
+  btnType: string;
 
   constructor(private router: Router, private orderService: OrderService) { }
 
@@ -26,6 +27,7 @@ export class OrderListComponent implements OnInit {
       .subscribe( data => {
         this.orders = data;
       });
+    this.btnType = 'Все заказы';
   }
 
   getActiveOrders() {
@@ -33,6 +35,7 @@ export class OrderListComponent implements OnInit {
       .subscribe( data => {
         this.orders = data;
       });
+    this.btnType = 'Текущие заказы';
   }
 
   getCompleteOrders() {
@@ -40,6 +43,7 @@ export class OrderListComponent implements OnInit {
       .subscribe( data => {
         this.orders = data;
       });
+    this.btnType = 'Завершенные за период';
   }
 
   completeOrder(order: Order): void {

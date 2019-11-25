@@ -3,5 +3,13 @@
     <h3>Заказ №{{order.id}}</h3>
     <label>Адрес назначения: </label><span>{{order.addressFrom}}</span><br/>
     <label>Адрес доставки: </label><span>{{order.addressTo}}</span><br/>
-  </div>
+    <div *ngIf="order.dateComplete && !order.active">
+      <label>Статус: </label><span>Завершен</span>
+    </div>
+    <div *ngIf="order.active">
+      <label>Статус: </label><span>Активен</span>
+    </div>
+    <div *ngIf="!order.dateComplete && !order.active">
+      <label>Статус: </label><span>Отменен</span>
+    </div>
 </div>

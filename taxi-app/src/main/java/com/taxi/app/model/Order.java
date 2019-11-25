@@ -21,6 +21,10 @@ public class Order {
     @Column(name = "address_to")
     private String addressTo;
 
+    @Column(name = "car")
+    @Enumerated(EnumType.STRING)
+    private CarEnum car;
+
     @Column(name = "date_complete")
     private Date dateComplete;
 

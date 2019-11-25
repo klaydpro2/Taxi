@@ -1,19 +1,28 @@
 <div class = "mainForm">
-  <h2 class="text-center">Информация о заказе</h2>
+  <h2>Информация о заказе</h2>
   <form>
-    <div class="form-group">
+    <div>
       <label>Адрес назначения: </label>
-      <input [(ngModel)]="order.addressFrom" name="addressFrom" class="form-control" id="addressFrom">
+      <input [(ngModel)]="order.addressFrom" name="addressFrom" id="addressFrom">
     </div><br>
 
-    <div class="form-group">
+    <div>
       <label>Адрес доставки: </label>
-      <input [(ngModel)]="order.addressTo" name="addressTo" class="form-control" id="addressTo">
-    </div>
+      <input [(ngModel)]="order.addressTo" name="addressTo" id="addressTo">
+    </div><br>
 
-    <div *ngIf="done">
+    <div>
+      <label>Автомобиль: </label>
+      <select id="car" name="car" [(ngModel)]="order.car">
+        <option value="FORD">FORD</option>
+        <option value="BMW">BMW</option>
+        <option value="LADA">LADA</option>
+      </select>
+    </div><br>
+
+    <div class = "divForm" *ngIf="done">
       <div>Заказ такси выполнен.</div>
-      <div>К вам подъедет  на адрес {{ receivedOrder.addressFrom }}</div>
+      <div>К вам подъедет {{receivedOrder.car}} на адрес {{ receivedOrder.addressFrom }}</div>
     </div>
     <br>
     <button (click)="createOrder()">Заказать</button>

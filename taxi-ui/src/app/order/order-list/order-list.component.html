@@ -1,6 +1,4 @@
 <div class = "mainForm">
-  <h3>Список заказов</h3>
-
   <div class ="buttons">
     <button (click)="getAllOrders()">Все</button>
     <button (click)="getActiveOrders()">Текущие</button>
@@ -9,6 +7,7 @@
     <input name="date" [(ngModel)]="dateEnd" type="date">
   </div>
 
+  <h3>{{btnType}}</h3>
   <table class="tableForm">
     <thead>
     <tr>
@@ -23,8 +22,8 @@
       <td>{{order.addressFrom}}</td>
       <td>{{order.addressTo}}</td>
       <a [routerLink]="['/order-view', order.id]">Просмотр</a>
-      <td><a class = "link" (click)="completeOrder(order)">Завершить заказ</a></td>
-      <td><a class = "link" (click)="cancelOrder(order)">Отменить заказ</a></td>
+      <td><a class = "link" *ngIf="order.active && !order.dateComplete" (click)="completeOrder(order)">Завершить заказ</a></td>
+      <td><a class = "link" *ngIf="order.active" (click)="cancelOrder(order)">Отменить заказ</a></td>
       <td><a class = "link" (click)="deleteOrder(order)">Удалить</a></td>
     </tr>
     </tbody>

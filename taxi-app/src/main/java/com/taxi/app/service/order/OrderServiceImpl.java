@@ -5,7 +5,6 @@ import com.taxi.app.repository.order.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -20,36 +19,19 @@ public class OrderServiceImpl implements OrderService {
         return repository.save(order);
     }
 
-    /*@Override
-    public List<Order> getOrders(String type) {
-        List<Order> result;
-        switch (type) {
-            case "all":
-                result = repository.findAll();
-                break;
-            case "current":
-                result = repository.findByActive(true);
-                break;
-            default:
-                result = new ArrayList<Order>();
-        }
-
-        return result;
-    }*/
-
     @Override
     public List<Order> getAll() {
-        return repository.findAll();
+        return repository.findAllByOrderById();
     }
 
     @Override
     public List<Order> getActive() {
-        return repository.findByActive(true);
+        return repository.findByActiveOrderById(true);
     }
 
     @Override
     public List<Order> getComplete(Date dateBegin, Date dateEnd) {
-        return repository.findByDateCompleteBetween(dateBegin, dateEnd);
+        return repository.findByDateCompleteBetweenOrderById(dateBegin, dateEnd);
     }
 
     @Override

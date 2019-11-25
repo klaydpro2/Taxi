@@ -9,15 +9,10 @@ export class OrderService {
   constructor(private http:HttpClient) {}
 
   private orderUrl = 'http://localhost:8080/order';
-  //private orderUrl = '/api';
 
     public getOrder(id: string) {
     return this.http.get<Order>(this.orderUrl + "/"+ id);
   }
-
-  /*public getOrders(type: string) {
-    return this.http.get<Order[]>(this.orderUrl + "/list/" + type);
-  }*/
 
   public getAllOrders() {
     return this.http.get<Order[]>(this.orderUrl + "/list/all");
